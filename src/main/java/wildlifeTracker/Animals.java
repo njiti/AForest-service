@@ -7,7 +7,7 @@ public abstract class Animals {
     public int id;
     public String name;
     public boolean endangered;
-
+    private Animals newAnimal;
 
 
     public int getId() {
@@ -19,7 +19,7 @@ public abstract class Animals {
 
     @Override
     public boolean equals(Object otherAnimal){
-        if (otherAnimal instanceof Animals newAnimal) {
+        if(otherAnimal instanceof Animals){
             return this.getName().equals(newAnimal.getName()) &&
                     this.getId()==(newAnimal.getId());
         } else {

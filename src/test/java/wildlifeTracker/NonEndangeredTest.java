@@ -26,8 +26,7 @@ public class NonEndangeredTest {
     }
     @Test
 
-    @Test
-    public void \AllInstancesOfNonEndangeredAnimals(){
+    public void AllInstancesOfNonEndangeredAnimals(){
         NonEndangered firstAnimal = new NonEndangered("lama");
         firstAnimal.save();
         NonEndangered secondAnimal = new NonEndangered("girrafe");
