@@ -6,11 +6,11 @@ import java.util.Objects;
 public class Sighting {
 
     private int id;
-    private int animalId;
-    private String location;
-    private String ranger_name;
+    private final int animalId;
+    private final String location;
+    private final String ranger_name;
     private Timestamp sightedAt;
-    private String type;
+    private final String type;
 
     public Sighting(int animalId, String location, String rangerName, String type) {
         this.animalId = animalId;

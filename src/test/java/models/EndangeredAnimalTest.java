@@ -7,7 +7,6 @@ import dao.*;
 import org.sql2o.*;
 import org.sql2o.Connection;
 
-import java.sql.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,7 +36,7 @@ class EndangeredAnimalTest {
     @Test
     void newAnimalIsInitialized() {
         EndangeredAnimal testAnimal = setUpAnimal();
-        assertTrue(testAnimal instanceof EndangeredAnimal);
+        assertTrue(testAnimal != null);
     }
 
     @Test
