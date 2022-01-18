@@ -46,11 +46,11 @@ public class App {
         }, new HandlebarsTemplateEngine());
         Spark.get("/normal-sightings/new", (request, response) -> {
             Map<String, Object> model = new HashMap();
-            return new ModelAndView(model, "normal-sighting-form.hbs");
+            return new ModelAndView(model, "normal-form.hbs");
         }, new HandlebarsTemplateEngine());
         Spark.get("/endangered-sightings/new", (request, response) -> {
             Map<String, Object> model = new HashMap();
-            return new ModelAndView(model, "endangered-sighting-form.hbs");
+            return new ModelAndView(model, "endangered-form.hbs");
         }, new HandlebarsTemplateEngine());
         Spark.post("/normal-sightings/new", (request, response) -> {
             String animalIdStr = request.queryParams("animalId");
