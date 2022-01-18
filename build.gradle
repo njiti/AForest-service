@@ -6,7 +6,6 @@ plugins {
 group 'com.moringa.wildlifeanimals'
 version '1.0-SNAPSHOT'
 
-
 sourceCompatibility = 1.8
 applicationName = "wildlife-animals"
 archivesBaseName = "wildlife-animals"
