@@ -1,14 +1,14 @@
 ## **Forest Service**
-in this application A nimals can be easily tracked, and the rangers and the area the animals are found are recorded.
+in this application Animals can be easily tracked, and the rangers and the area the animals are found are recorded.
 
 ## description
 
-An application launch the user can add and new new animals and the areas they were noticed.
+An application launch the user can add and  new animals and the areas they were noticed.
 ## Author
-JAPHETH NYARANGA.
+Kamau Kanyua.
 
 ### Contacts
-nyaranga4@gmail.com
+kamaukan77@gmail.com
 
 ## SetUp
 
