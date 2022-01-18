@@ -3,13 +3,13 @@ plugins {
     id 'application'
 }
 
-group 'com.moringa.AForest-service'
+group 'com.moringa.wildlifeanimals'
 version '1.0-SNAPSHOT'
 
-mainClassName = 'App'
+
 sourceCompatibility = 1.8
-applicationName = "AForest-service"
-archivesBaseName = "AForest-service"
+applicationName = "wildlife-animals"
+archivesBaseName = "wildlife-animals"
 
 repositories {
     mavenCentral()
