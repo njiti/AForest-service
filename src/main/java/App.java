@@ -1,38 +1,41 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+import dao.sql2oEndangeredAnimalsDao;
+import dao.sql2oNormalAnimalDao;
+import dao.sql2oSightingsDao;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import models.EndangeredAnimal;
 import models.NormalAnimal;
 import models.Sighting;
+import org.sql2o.Sql2o;
 import spark.ModelAndView;
+import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
-import java.util.*;
+public class App {
+    public App() {
+    }
 
-import static spark.Spark.*;
-import dao.*;
-import org.sql2o.*;
-
-class App {
     static int getHerokuAssignedPort() {
-        ProcessBuilder processBuilder = new ProcessBuilder();
-        if (processBuilder.environment().get("PORT") != null) {
-            return Integer.parseInt(processBuilder.environment().get("PORT"));
-        }
-        return 4567;
+        ProcessBuilder processBuilder = new ProcessBuilder(new String[0]);
+        return processBuilder.environment().get("PORT") != null ? Integer.parseInt((String)processBuilder.environment().get("PORT")) : 4567;
     }
 
     public static void main(String[] args) {
-
-        port(getHerokuAssignedPort());
-        staticFileLocation("/public");
-
-        String connectionString = "jdbc:postgresql://ec2-3-232-22-121.compute-1.amazons.com:5432/die0sfc5mt62m";
-        Sql2o sql2o = new Sql2o(connectionString, "brigadier", "ce9fb937d9b5c0d02c15be407406c71b53ca8c269f8ce6353b43598931faded63");
+        Spark.port(getHerokuAssignedPort());
+        Spark.staticFileLocation("/public");
+        String connectionString = "jdbc:postgresql://ec2-3-232-22-121.compute-1.amazonaws.com:5432/dbie0sfc5mt62m";
+        Sql2o sql2o = new Sql2o(connectionString, "bgyifudirguvza", "ce9fb937d9b5c0d02c15be407406c71b53ca8c269f8ce6353b43598931fdad63");
         sql2oNormalAnimalDao sql2oNormalAnimalDao = new sql2oNormalAnimalDao(sql2o);
         sql2oEndangeredAnimalsDao sql2oEndangeredAnimalsDao = new sql2oEndangeredAnimalsDao(sql2o);
         sql2oSightingsDao sql2oSightingsDao = new sql2oSightingsDao(sql2o);
-
-        // get: Homepage
-        get("/", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
+        Spark.get("/", (request, response) -> {
+            Map<String, Object> model = new HashMap();
             List<EndangeredAnimal> endangeredAnimals = sql2oEndangeredAnimalsDao.returnAll();
             List<NormalAnimal> normalAnimals = sql2oNormalAnimalDao.returnAll();
             List<Sighting> allSightings = sql2oSightingsDao.returnAll();
@@ -41,21 +44,15 @@ class App {
             model.put("normalAnimals", normalAnimals);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
-
-        //get: Show Normal Animal Sighting Form
-        get("/normal-sightings/new", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
+        Spark.get("/normal-sightings/new", (request, response) -> {
+            Map<String, Object> model = new HashMap();
             return new ModelAndView(model, "normal-sighting-form.hbs");
         }, new HandlebarsTemplateEngine());
-
-        //get: Show Endangered Animal Sighting Form
-        get("/endangered-sightings/new", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
+        Spark.get("/endangered-sightings/new", (request, response) -> {
+            Map<String, Object> model = new HashMap();
             return new ModelAndView(model, "endangered-sighting-form.hbs");
         }, new HandlebarsTemplateEngine());
-
-        //post: Post Normal Animal Form
-        post("/normal-sightings/new", (request, response) -> {
+        Spark.post("/normal-sightings/new", (request, response) -> {
             String animalIdStr = request.queryParams("animalId");
             int animalId = Integer.parseInt(animalIdStr);
             String animalName = request.queryParams("animalName");
@@ -69,9 +66,7 @@ class App {
             response.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
-
-        //post: Post Endangered Animal Form
-        post("/endangered-sightings/new", (request, response) -> {
+        Spark.post("/endangered-sightings/new", (request, response) -> {
             String endangeredAnimalIdStr = request.queryParams("animalId");
             int endangeredAnimalId = Integer.parseInt(endangeredAnimalIdStr);
             String endangeredAnimalName = request.queryParams("animalName");
@@ -87,7 +82,5 @@ class App {
             response.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
-
-
     }
 }
